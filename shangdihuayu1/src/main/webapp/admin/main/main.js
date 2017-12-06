@@ -78,8 +78,8 @@ $(function() {
 		"subMenu": [{
 			"menu_id": "86ac3be6-390a-11e7-a2af-74d02b7d5f71",
 			"icon": "role",
-			"title": "角色信息",
-			"link": "/user/user.html"
+			"title": "用户信息",
+			"link": "/manage/user.html"
 		}]
 	}];
 

@@ -29,7 +29,7 @@ $(function(){
 		$.post('../userAction/loginSubmit1.action', $('form').serialize(), function(result) {
 			if (result.success) {
 				var userInfo = result.result;
-				setCookie('userInfo', JSON.Stringify(userInfo));
+				setCookie('userInfo', JSON.stringify(userInfo));
 				console.info(userInfo);
 				location.href = 'main/main.html';
 			} else {
