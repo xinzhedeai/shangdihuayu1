@@ -1628,7 +1628,7 @@ a:focus {
 }
 
 .datagrid-mask-msg {
-	background: #666 url("images/loading.gif") no-repeat scroll 5px center
+	background: #f5f2f2 url("images/loading.gif") no-repeat scroll 5px center
 }
 
 .datagrid-header, .datagrid-td-rownumber {
@@ -1651,11 +1651,11 @@ a:focus {
 }
 
 .datagrid-mask {
-	background: #000
+	background: #9b9595
 }
 
 .datagrid-mask-msg {
-	border-color: #000
+	border-color: #fffefe
 }
 
 .datagrid-toolbar, .datagrid-pager {
