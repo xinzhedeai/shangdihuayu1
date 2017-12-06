@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
 		return 0;
 	}
 
+	@Override
+	public Object getUserInfo(Map reqMap) {
+		return customUserInfoMapper.getUserInfo(reqMap);
+	}
+
 }

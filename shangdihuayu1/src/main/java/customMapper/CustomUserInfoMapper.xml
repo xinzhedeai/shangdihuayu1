@@ -9,4 +9,12 @@
 	    where 
 	    	user_name = #{userName} and user_pwd = #{userPwd};
 	</select>
+	<select id="getUserInfo" resultType="Map">
+		select 
+			*
+		from
+			user
+	    where 
+	    	user_name = #{user_name} and user_pwd = #{user_pwd};
+	</select>
 </mapper>

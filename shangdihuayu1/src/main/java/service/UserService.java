@@ -7,4 +7,6 @@ import pageModel.ActiveUser;
 public interface UserService {
 	//用户认证
 	public int checkUser(Map map) throws Exception;
+
+	public Object getUserInfo(Map reqMap);
 }

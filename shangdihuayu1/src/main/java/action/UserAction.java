@@ -56,9 +56,12 @@ public class UserAction extends BaseAction{
 		System.out.println("进到login里面了。");
 		Map reqMap = SpringUtils.getParameterMap(req);
 		JsonResult j = new JsonResult();
-		if(userServiceImpl.checkUser(reqMap) == 1){
+		Map resultMap = (Map) userServiceImpl.getUserInfo(reqMap);
+		
+		if(resultMap != null){
 			j.setSuccess(true);
 			j.setMsg("登录成功！");
+			j.setResult(resultMap);
 		}else{
 			j.setSuccess(false);
 			j.setMsg("账号或密码错误！");
