@@ -26,7 +26,7 @@ $(function(){
 	});
 })
 	function loginFun() {
-		$.post('../userAction/loginSubmit1.action', $('form').serialize(), function(result) {
+		$.post('../userAction/loginSubmit.action', $('form').serialize(), function(result) {
 			if (result.success) {
 				var userInfo = result.result;
 				setCookie('userInfo', JSON.stringify(userInfo));

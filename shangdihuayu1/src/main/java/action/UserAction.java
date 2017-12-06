@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import normalMapper.UserMapper;
 import normalPo.User;
 import normalPo.UserExample;
+import pageModel.EasyUIGridObj;
 import pageModel.JsonResult;
 import service.UserService;
 import util.SpringUtils;
@@ -27,31 +28,9 @@ public class UserAction extends BaseAction{
 	private UserMapper userMapper;
 	@Autowired
 	private UserService userServiceImpl;
-/*	@RequestMapping("/login")
-	public String login()throws Exception{
-		return "login";
-	}*/
+	
 	@ResponseBody
 	@RequestMapping("/loginSubmit")
-	public JsonResult loginSubmit(HttpSession session, String userName, String userPwd)throws Exception{
-		System.out.println("进到servlet里面了。");
-		UserExample userExp = new UserExample();
-		UserExample.Criteria criteria = userExp.createCriteria();
-		criteria.andUserNameEqualTo(userName).andUserPwdEqualTo(userPwd);
-		List<User> userInfoList = userMapper.selectByExample(userExp);
-		JsonResult j = new JsonResult();
-		if(userInfoList.size() == 1){
-			j.setSuccess(true);
-			j.setMsg("登录成功！");
-			j.setResult(userInfoList.get(0));
-		}else{
-			j.setSuccess(false);
-			j.setMsg("账号或密码错误！");
-		}
-		return j;
-	}
-	@ResponseBody
-	@RequestMapping("/loginSubmit1")
 	public JsonResult loginSubmit1(HttpServletRequest req)throws Exception{
 		System.out.println("进到login里面了。");
 		Map reqMap = SpringUtils.getParameterMap(req);
@@ -68,4 +47,22 @@ public class UserAction extends BaseAction{
 		}
 		return j;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/getUserListByPage")
+	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
+		Map reqMap = SpringUtils.getParameterMap(req);
+		JsonResult j = new JsonResult();
+		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) userServiceImpl.getUserListByPage(reqMap);
+		if(easyUIGridObj != null){
+			j.setSuccess(true);
+			j.setMsg("登录成功！");
+			j.setResult(easyUIGridObj);
+		}else{
+			j.setSuccess(false);
+			j.setMsg("账号或密码错误！");
+		}
+		return j;
+	}
+	
 }

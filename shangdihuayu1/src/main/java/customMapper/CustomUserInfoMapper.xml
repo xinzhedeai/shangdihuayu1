@@ -17,4 +17,26 @@
 	    where 
 	    	user_name = #{user_name} and user_pwd = #{user_pwd};
 	</select>
+	
+	<select id="getUserListByPage"  parameterType="Map" resultType="Map">
+		select
+			user_id        ,
+			user_name      ,
+			gender         ,
+			tel            ,
+			weichat        ,
+			qq             ,
+			last_login_time,
+			state
+		from
+			user
+   		<where>
+		 	<if test="user_name != null and user_name != ''">
+			 	and US_NAME like '%${nickName}%'
+		 	</if>
+		 <!-- 	<if test="order != null and sort != null">
+			 	ORDER BY ${sort} ${order}
+		 	</if> -->
+	 	</where>	
+	 </select>
 </mapper>
