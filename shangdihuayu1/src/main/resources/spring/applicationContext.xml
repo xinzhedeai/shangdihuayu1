@@ -89,4 +89,14 @@
   pointcut="execution(* service.impl.*.*(..))"/>
 </aop:config>
 
+<!-- 加载properties文件 -->
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+        <array>
+            <value>classpath:config/path.properties</value>
+        </array>
+    </property>
+    <property name="fileEncoding" value="UTF-8"/>
+</bean>
+
 </beans>

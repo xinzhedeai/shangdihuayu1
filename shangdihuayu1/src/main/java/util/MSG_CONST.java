@@ -9,7 +9,9 @@ public enum MSG_CONST {
 	DELETEFAIL("删除失败", 301),
 	READSUCCESS("读取成功", 400),
 	READFAIL("读取失败", 401),
-	ERROR("发生错误", 401);
+	ERROR("发生错误", 401),
+	UPLOADSUCCESS("上传成功", 501),
+	UPLOADFAIL("上传失败", 502);
 	
 	
 	private String name;

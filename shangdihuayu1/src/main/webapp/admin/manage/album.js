@@ -18,6 +18,13 @@ $(function() {
 	$('#addOk').click(function(){
 		$album.addAlbum();
 	});
+	
+	$('#upload_album_pic_btn').click(function(){
+		$('#upload_img_modal').modal();
+		
+		$('#upload_img_div').fileUpload();
+		$('#upload_img_div').plupload('getUploader').setOption('url', contextPath + '/uploadAction/uploadFile.action?module=' + 'shangdihuayu');
+	});
 	var albumColumns = [{
 		field : 'ck',
 		checkbox : true
@@ -32,9 +39,6 @@ $(function() {
 		title : '专辑名称',
 		width : 100,
 		sortable : true,
-		formatter : function(value, row, index) {  
-			return value == '0' ? '男' : '女';
-		}
 	},  {
 		field : 'create_date',
 		title : '创建日期',
@@ -56,13 +60,13 @@ $(function() {
 //		width : 1307,
 //		sortOrder : 'desc',
 		idField : 'album_id',
-		pageSize : 1,
+		pageSize : 5,
 		pageNumber : 1,
 //		frozenColumns : [ ],
-		pageList: [1],
-		queryParams : {
+		pageList: [5],
+	/*	queryParams : {
 			"album_name" : "读经灵修"
-		},
+		},*/
 		loadFilter : function(data) {
 			if (data != null) {
 				if(data.result.rows != null){
@@ -89,7 +93,7 @@ var $album = {
 	addAlbum : function(){
 		var reqParams = {};
 		reqParams = $('.album_form').serializeArray();
-		reqParams.push({'name':'user_id', 'value':'haliluya!!!'});
+		reqParams.push({'name':'file_name', 'value': $('.pic_preview_div').find('img').attr('file_name')});
 		util.ajaxPostCus('/albumAction/addAlbum.action', reqParams, function(res){
 			var result = res.result;
 	   		if(res.errCd == '0'){
