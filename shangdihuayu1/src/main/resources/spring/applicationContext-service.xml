@@ -16,7 +16,7 @@
 
 	<!-- *****前台管理**** -->
 	<!-- 经文增删改查管理 -->
-	<bean id="scriptureService" class="service.impl.ScriptureServiceImpl"/>
+	<bean id="albumService" class="service.impl.AlbumServiceImpl"/>
 	<!-- 用户管理 -->
 	<bean id="userService" class="service.impl.UserServiceImpl"/>
 </beans>

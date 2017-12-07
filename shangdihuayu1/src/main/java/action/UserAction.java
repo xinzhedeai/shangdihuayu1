@@ -51,6 +51,7 @@ public class UserAction extends BaseAction{
 	@ResponseBody
 	@RequestMapping("/getUserListByPage")
 	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
+//		Thread.sleep(2000000000);
 		Map reqMap = SpringUtils.getParameterMap(req);
 		JsonResult j = new JsonResult();
 		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) userServiceImpl.getUserListByPage(reqMap);

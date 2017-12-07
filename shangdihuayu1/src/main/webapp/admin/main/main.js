@@ -80,6 +80,12 @@ $(function() {
 			"icon": "role",
 			"title": "用户信息",
 			"link": "/manage/user.html"
+		},
+		{
+			"menu_id": "86ac3be6-390a-11e7-a2af-74d02b7d5f71",
+			"icon": "role",
+			"title": "专辑信息",
+			"link": "/manage/album.html"
 		}]
 	}];
 
@@ -141,10 +147,6 @@ $(function() {
 		}
 	})
 
-    $('.pf-logout').click(function() {//安全退出
-    	location.href= 'login.html'; 
-    });
-   
     $(document).on('click', '.toggle-icon', function() { //左侧菜单收起
         $(this).closest("#pf-bd").toggleClass("toggle");
         setTimeout(function(){
@@ -156,10 +158,18 @@ $(function() {
         $('#pf-page').find('iframe').eq(0).attr('src', 'backend/modify_pwd.html')
     });
     
+    
+    $('#logout').click(function(){//安全退出
+    	console.log('安全登出');
+    	location.href = "../login.html";
+    });
+    
 	// setTimeout(function(){
 	// $('.tabs-panels').height($("#pf-page").height()-46);
 	// $('.panel-body').height($("#pf-page").height()-76)
 	// }, 200)
+    
+    
 
 });
 function addTab(params) {

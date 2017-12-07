@@ -8,7 +8,8 @@ public enum MSG_CONST {
 	DELETESUCCESS("删除成功", 300),
 	DELETEFAIL("删除失败", 301),
 	READSUCCESS("读取成功", 400),
-	READFAIL("读取失败", 401);
+	READFAIL("读取失败", 401),
+	ERROR("发生错误", 401);
 	
 	
 	private String name;

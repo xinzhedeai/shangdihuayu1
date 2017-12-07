@@ -10,6 +10,9 @@ document.write('<link rel="stylesheet" type="text/css" href="../../lib/plugin/bo
 document.write('<link rel="stylesheet" type="text/css" href="../lib/plugin/custom/uimaker/easyui.css" />\
 				<link rel="stylesheet" type="text/css" href="../../lib/css/extend-easyUI.css" />');
 
+//页面个性化css
+document.write('<link rel="stylesheet" type="text/css" href="../lib/css/default.css" />');
+
 
 /*****************JS*****************/
 document.write('<script type="text/javascript" src="../lib/plugin/custom/jquery.min.js"></script>');

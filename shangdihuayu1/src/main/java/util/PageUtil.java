@@ -62,8 +62,8 @@ public class PageUtil {
 		
 		//java反射机制，动态调用方法
 		try {
-			Method targetMethod = object.getClass().getMethod(method, null);//获取对象相应方法
-			List<Map> list = (List<Map>) targetMethod.invoke(object, null);//调用相应方法
+			Method targetMethod = object.getClass().getMethod(method, Map.class);//获取对象相应方法
+			List<Map> list = (List<Map>) targetMethod.invoke(object, paramMap);//调用相应方法
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {

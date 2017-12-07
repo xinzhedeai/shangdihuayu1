@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="customMapper.CustomAlbumMapper">
+	<insert id="insertAlbum" parameterType="Map">
+		insert into album
+			(
+			album_id,
+			album_name,
+			create_time,
+			remark
+			)
+		values
+			(
+			#{album_id},
+			#{album_name},
+			NOW(),
+			#{remark}
+			)
+	</insert>
+	<select id="getAlbumListByPage" parameterType="Map" resultType="Map">
+		SELECT 
+			album_id,
+			album_name,
+			create_time,
+			remark
+		 FROM
+			album
+		<where>
+			<if test="album_name != null and album_name != ''">
+				album_name like '%${album_name}%'
+			</if>
+		</where>
+	</select>
+	<select id="searchScripturesByDate" parameterType="Map" resultType="Integer">
+		SELECT  
+			substring(scripture_no, 2)<!-- 从第二个字符开始裁剪包含第二个 --> 
+		FROM
+		SCRIPTURE
+		<where>
+			<if test="type != null and type != ''">
+				type = #{type}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND create_date = #{createDate}
+			</if>
+		</where>
+	</select>
+
+</mapper>
