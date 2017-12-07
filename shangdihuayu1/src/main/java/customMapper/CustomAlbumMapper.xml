@@ -19,15 +19,20 @@
 	</insert>
 	<select id="getAlbumListByPage" parameterType="Map" resultType="Map">
 		SELECT 
-			album_id,
-			album_name,
-			create_time,
-			remark
+			a.album_id,
+			a.album_name,
+			a.create_time,
+			a.remark,
+<!-- 			CONCAT(#{rel_path}, b.album_id,'/',b.file_name) as album_img -->
+			b.file_name as album_img
 		 FROM
-			album
+			album a
+		LEFT JOIN
+		file b
+			ON 	a.album_id = b.album_id
 		<where>
 			<if test="album_name != null and album_name != ''">
-				album_name like '%${album_name}%'
+				a.album_name like '%${album_name}%'
 			</if>
 		</where>
 	</select>

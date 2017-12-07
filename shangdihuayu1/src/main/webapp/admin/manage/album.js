@@ -39,7 +39,15 @@ $(function() {
 		title : '专辑名称',
 		width : 100,
 		sortable : true,
-	},  {
+	}, {
+		field : 'album_img',
+		title : '专辑图片',
+		width : 100,
+		sortable : true,
+		formatter: function(value, row, index ){
+			return '<img width="50" height="50" src="/img/shangdihuayu/'+ value +'"/>';
+		}
+	}, {
 		field : 'create_date',
 		title : '创建日期',
 		width : 100,

@@ -97,9 +97,11 @@ public class AlbumAction {
 	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
 //		Thread.sleep(2000000000);
 		Map reqMap = SpringUtils.getParameterMap(req);
+		reqMap.put("rel_path", "/storage/upload/Img/");
 		JsonResult j = new JsonResult();
 		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) albumServiceImpl.getAlbumListByPage(reqMap);
 		if(easyUIGridObj != null){
+		
 			j.setSuccess(true);
 			j.setMsg(MSG_CONST.READSUCCESS);
 			j.setResult(easyUIGridObj);

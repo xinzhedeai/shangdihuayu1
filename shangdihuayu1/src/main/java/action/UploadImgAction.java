@@ -61,7 +61,8 @@ public class UploadImgAction extends BaseAction{
 					String fileName = (String) files.next();
 					MultipartFile multiFile = multiReq.getFile(fileName);
 					if (multiFile != null && !multiFile.isEmpty()) {
-						String file_path = req.getSession().getServletContext().getRealPath(relPath) + module;
+//						String file_path = req.getSession().getServletContext().getRealPath(relPath) + module;
+						String file_path = "D:photo/img/" + module;
 						System.out.println(file_path);
 						if (multiFile != null && !multiFile.isEmpty()) {
 
