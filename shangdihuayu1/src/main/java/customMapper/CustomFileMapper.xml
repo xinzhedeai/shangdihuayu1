@@ -18,15 +18,15 @@
 		values
 			(
 			UUID(),
+			#{module},
 			#{album_id},
-			#{album_id},
-			'78',
-			'image',
+			'11',
+			#{type},
 			#{file_name},
-			'78',
-			'78',
+			'11',
+			'11',
 			NOW(),
-			'78'
+			'11'
 			)
 	</insert>
 

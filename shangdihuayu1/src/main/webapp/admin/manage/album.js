@@ -23,7 +23,8 @@ $(function() {
 		$('#upload_img_modal').modal();
 		
 		$('#upload_img_div').fileUpload();
-		$('#upload_img_div').plupload('getUploader').setOption('url', contextPath + '/uploadAction/uploadFile.action?module=' + 'shangdihuayu');
+		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' + 'shangdihuayu';
+		$('#upload_img_div').plupload('getUploader').setOption('url', url);
 	});
 	var albumColumns = [{
 		field : 'ck',
@@ -45,7 +46,7 @@ $(function() {
 		width : 100,
 		sortable : true,
 		formatter: function(value, row, index ){
-			return '<img width="50" height="50" src="/img/shangdihuayu/'+ value +'"/>';
+			return '<img width="50" height="50" src="/upload/'+ value +'"/>';
 		}
 	}, {
 		field : 'create_date',
@@ -100,8 +101,10 @@ function reloadClear(){
 var $album = {
 	addAlbum : function(){
 		var reqParams = {};
-		reqParams = $('.album_form').serializeArray();
-		reqParams.push({'name':'file_name', 'value': $('.pic_preview_div').find('img').attr('file_name')});
+//		reqParams = $('.album_form').serializeArray();
+		reqParams = $.serializeObject($('.album_form'));
+		reqParams = $.extend(reqParams, $('.pic_preview_div').find('img').data());
+//		reqParams.push({'name':'file_name', 'value': $('.pic_preview_div').find('img').data()});
 		util.ajaxPostCus('/albumAction/addAlbum.action', reqParams, function(res){
 			var result = res.result;
 	   		if(res.errCd == '0'){

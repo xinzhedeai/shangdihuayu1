@@ -78,7 +78,7 @@ public class AlbumAction {
 		String album_id = StringUtil.converterToSpell(paramMap.get("album_name").toString());
 		paramMap.put("album_id", album_id);
 		try {
-			if (albumServiceImpl.insertAlbum(paramMap) > 0 && fileServiceImpl.insertFile(paramMap) > 0) {
+			if (fileServiceImpl.insertFile(paramMap) > 0 && albumServiceImpl.insertAlbum(paramMap) > 0) {
 				j.setSuccess(true);
 				j.setMsg(MSG_CONST.ADDSUCCESS);
 			} else {

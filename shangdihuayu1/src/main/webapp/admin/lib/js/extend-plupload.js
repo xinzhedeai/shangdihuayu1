@@ -94,7 +94,21 @@ jQuery.fn.fileUpload = function() {
 								if (res.success) {
 									var result = res.result;
 									if (result) {
-										$('.pic_preview_div').html('<img width="45" height="45" style="float:left; margin:0 20px;" file_name="'+ result.file_name +'" src="'+ contextPath + result.path +'"/>');
+										if(result.type == 'image'){//回显图片
+											$('.pic_preview_div').html('<img width="45" height="45" style="float:left; margin:0 20px;"\
+													data-file_name="'+ result.file_name +'"\
+													data-type="'+ result.type +'"\
+													data-module="'+ result.module +'"\
+													src="'+ contextPath + '/upload' + result.path +'"/>');
+										}else{//回显音频
+											$('.multiMedia_preview_div').html('<audio controls="controls"\
+													data-multiMedia_file_name="'+ result.file_name +'"\
+													data-multiMedia_type="'+ result.type +'"\
+													data-multiMedia_module="'+ result.module +'"\
+													src="'+ contextPath + '/upload' + result.path +'">\
+													您的浏览器咱不支持audio标签</audio>');
+										}
+										
 										msg = res.msg;
 									}
 								} else {

@@ -24,7 +24,8 @@
 			a.create_time,
 			a.remark,
 <!-- 			CONCAT(#{rel_path}, b.album_id,'/',b.file_name) as album_img -->
-			b.file_name as album_img
+<!-- 			b.file_name as album_img	 -->				
+			CONCAT(b.type, '/', b.module, '/', b.file_name) as album_img																																											
 		 FROM
 			album a
 		LEFT JOIN

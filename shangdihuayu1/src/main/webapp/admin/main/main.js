@@ -86,6 +86,12 @@ $(function() {
 			"icon": "role",
 			"title": "专辑信息",
 			"link": "/manage/album.html"
+		},
+		{
+			"menu_id": "86ac3be6-390a-11e7-a2af-74d02b7d5f71",
+			"icon": "role",
+			"title": "播音信息",
+			"link": "/manage/voice.html"
 		}]
 	}];
 
