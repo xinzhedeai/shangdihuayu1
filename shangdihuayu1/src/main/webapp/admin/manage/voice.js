@@ -23,14 +23,16 @@ $(function() {
 	$('#upload_voice_pic_btn').click(function(){//上传音频的背景图片
 		$('#upload_img_modal').modal();
 		$('#upload_img_div').fileUpload();
-		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' + 'shangdihuayu';
+		var album = $('.album_id', '#addVoiceModal').combobox('getText');
+		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' +  encodeURIComponent(album);
 		$('#upload_img_div').plupload('getUploader').setOption('url', url);
 	});
 	
 	$('#upload_multiMedia_pic_btn').click(function(){
 		$('#upload_multiMedia_modal').modal();
 		$('#upload_multiMedia_div').fileUpload();
-		var url =  contextPath + '/uploadAction/uploadFile.action?type=multiMedia&module=' + 'shangdihuayu';
+		var album = $('.album_id', '#addVoiceModal').combobox('getText');
+		var url =  contextPath + '/uploadAction/uploadFile.action?type=multiMedia&module=' + encodeURIComponent(album);
 		$('#upload_multiMedia_div').plupload('getUploader').setOption('url', url);
 	});
 	var voiceColumns = [{
@@ -39,23 +41,23 @@ $(function() {
 	}, {
 		field : 'voice_id',
 		title : '音频ID',
-		width : 200,
+		width : 150,
 		sortable : true,
 	
 	}, {
 		field : 'voice_name',
 		title : '音频名称',
-		width : 100,
+		width : 200,
 		sortable : true,
 	}, {
-		field : 'user_id',
+		field : 'user_name',
 		title : '主播名称',
-		width : 100,
+		width : 200,
 		sortable : true,
 	},{
 		field : 'img_file_path',
-		title : '音频封面写真',
-		width : 100,
+		title : '封面写真',
+		width : 60,
 		sortable : true,
 		formatter: function(value, row, index ){
 			return '<img width="50" height="50" src="/upload/'+ value +'"/>';
@@ -63,7 +65,7 @@ $(function() {
 	},{
 		field : 'multimeida_file_path',
 		title : '音频播放路径',
-		width : 100,
+		width : 260,
 		sortable : true,
 		formatter: function(value, row, index ){
 			return '<audio controls="controls" src="/upload/'+ value +'"></audio>';
@@ -76,7 +78,7 @@ $(function() {
 	}, {
 		field : 'create_date',
 		title : '上传日期',
-		width : 100,
+		width : 90,
 		sortable : true,
 	},  {
 		field : 'remark',
@@ -88,7 +90,7 @@ $(function() {
 		url : contextPath + '/voiceAction/getVoiceListByPage.action',
 		columns: [voiceColumns],
 		pagination : true,
-		fitColumns : false,
+		fitColumns : true,
 		rownumbers : true,
 		checkOnSelect:false,
 //		width : 1307,
