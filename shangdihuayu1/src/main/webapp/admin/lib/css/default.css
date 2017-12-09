@@ -9,4 +9,4 @@
 	text-align: right;
 	margin-bottom: 10px;
 }
-#searchForm > table > tbody > tr > td:nth-child(n+1){font-weight:bold; vertical-align: middle; text-align:right;}
+#searchForm > table > tbody > tr > td:nth-child(2n+1){font-weight:bold; vertical-align: middle; text-align:right;}
