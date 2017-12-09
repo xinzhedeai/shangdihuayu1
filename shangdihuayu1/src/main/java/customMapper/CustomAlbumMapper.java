@@ -10,4 +10,8 @@ public interface CustomAlbumMapper {
 
 	List<Map> getAllAlbumList();
 
+	int insertAlbumLv1(Map paramMap);
+
+	int insertAlbumLv2(Map paramMap);
+
 }

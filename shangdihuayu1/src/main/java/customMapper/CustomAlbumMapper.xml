@@ -44,5 +44,41 @@
 		FROM
 			album
 	</select>
+	<!-- 添加一级专辑 -->
+	<insert id="insertAlbumLv1" parameterType="Map">
+		insert into album
+			(
+			album_id,
+			album_name,
+			create_time,
+			remark
+			)
+		values
+			(
+			#{album_id_lv1_pinyin},
+			#{album_id_lv1},
+			NOW(),
+			#{remark}
+			)
+	</insert>
+		<!-- 添加一级专辑 -->
+	<insert id="insertAlbumLv2" parameterType="Map">
+		insert into album
+			(
+			album_id,
+			album_name,
+			create_time,
+			remark,
+			parent_id
+			)
+		values
+			(
+			#{album_id_lv2_pinyin},
+			#{album_id_lv2},
+			NOW(),
+			#{remark},
+			#{album_id_lv1_pinyin}
+			)
+	</insert>
 
 </mapper>

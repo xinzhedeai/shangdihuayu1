@@ -87,5 +87,62 @@
 			'11'
 			)
 	</insert>
-
+	<!-- 添加一级专辑封面 -->
+	<insert id="insertAlbumLv1File" parameterType="Map">
+			insert into file
+			(
+			file_id             ,
+			module              ,
+			album_id            ,
+			voice_id            ,
+			type                ,
+			file_name           ,
+			file_extension      ,
+			file_size           ,
+			upload_time         ,
+			file_content_type
+			)
+		values
+			(
+			UUID(),
+			#{module},
+			#{album_id_lv1_pinyin},
+			'11',
+			#{type},
+			#{file_name},
+			'11',
+			'11',
+			NOW(),
+			'11'
+			)
+	</insert>
+	<!-- 添加二级专辑封面 -->
+	<insert id="insertAlbumLv2File" parameterType="Map">
+			insert into file
+			(
+			file_id             ,
+			module              ,
+			album_id            ,
+			voice_id            ,
+			type                ,
+			file_name           ,
+			file_extension      ,
+			file_size           ,
+			upload_time         ,
+			file_content_type
+			)
+		values
+			(
+			UUID(),
+			#{module},
+			#{album_id_lv2_pinyin},
+			'11',
+			#{type},
+			#{file_name},
+			'11',
+			'11',
+			NOW(),
+			'11'
+			)
+	</insert>
 </mapper>

@@ -11,4 +11,8 @@ public interface FileService {
 
 	int insertMultiMediaFile(Map paramMap);
 
+	int insertAlbumLv1File(Map paramMap);
+
+	int insertAlbumLv2File(Map paramMap);
+
 }

@@ -7,6 +7,8 @@
 'use strict';
 
 $(function() {
+	util.getAlbumList();
+	
 	$album.selector = {
 		albumDatagrid : $('#albumDatagrid'),
 		addAlbumModal : $('#addAlbumModal'),
@@ -23,7 +25,13 @@ $(function() {
 		$('#upload_img_modal').modal();
 		
 		$('#upload_img_div').fileUpload();
-		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' + 'shangdihuayu';
+		var album_id_lv1 = $('#album_id_lv1').combobox('getText'),
+			album_id_lv2 = $('#album_id_lv2').val().trim(),
+			module = album_id_lv2 ? encodeURIComponent(album_id_lv1 + '/' + album_id_lv2) : encodeURIComponent(album_id_lv1);
+		console.info(module);
+		var	url = contextPath + '/uploadAction/uploadFile.action?type=image&module=' + module;
+		
+			console.log(url);
 		$('#upload_img_div').plupload('getUploader').setOption('url', url);
 	});
 	var albumColumns = [{
@@ -101,9 +109,9 @@ function reloadClear(){
 var $album = {
 	addAlbum : function(){
 		var reqParams = {};
-//		reqParams = $('.album_form').serializeArray();
 		reqParams = $.serializeObject($('.album_form'));
 		reqParams = $.extend(reqParams, $('.pic_preview_div').find('img').data());
+		reqParams.album_id_lv1 = $('#album_id_lv1').combobox('getText');
 //		reqParams.push({'name':'file_name', 'value': $('.pic_preview_div').find('img').data()});
 		util.ajaxPostCus('/albumAction/addAlbum.action', reqParams, function(res){
 			var result = res.result;

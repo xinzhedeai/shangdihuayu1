@@ -37,5 +37,15 @@ public class AlbumServiceImpl implements AlbumService {
 		return albumMapper.getAllAlbumList();
 	}
 
+	@Override
+	public int insertAlbumLv1(Map paramMap) {
+		return albumMapper.insertAlbumLv1(paramMap);
+	}
+
+	@Override
+	public int insertAlbumLv2(Map paramMap) {
+		return albumMapper.insertAlbumLv2(paramMap);
+	}
+
 
 }

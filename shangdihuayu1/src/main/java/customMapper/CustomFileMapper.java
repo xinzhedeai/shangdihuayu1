@@ -8,4 +8,8 @@ public interface CustomFileMapper {
 	int insertMultiMediaImg(Map map);
 
 	int insertMultiMediaFile(Map map);
+
+	int insertAlbumLv1File(Map paramMap);
+
+	int insertAlbumLv2File(Map paramMap);
 }

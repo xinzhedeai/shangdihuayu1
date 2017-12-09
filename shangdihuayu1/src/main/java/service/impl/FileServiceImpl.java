@@ -31,4 +31,14 @@ public class FileServiceImpl implements FileService {
 		return fileMapper.insertMultiMediaFile(map);
 	}
 
+	@Override
+	public int insertAlbumLv1File(Map paramMap) {
+		return fileMapper.insertAlbumLv1File(paramMap);
+	}
+
+	@Override
+	public int insertAlbumLv2File(Map paramMap) {
+		return fileMapper.insertAlbumLv2File(paramMap);
+	}
+
 }

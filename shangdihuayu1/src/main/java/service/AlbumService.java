@@ -11,4 +11,8 @@ public interface AlbumService {
 	EasyUIGridObj getAlbumListByPage(Map reqMap);
 
 	List<Map> getAllAlbumList();
+
+	int insertAlbumLv1(Map paramMap);
+
+	int insertAlbumLv2(Map paramMap);
 }
