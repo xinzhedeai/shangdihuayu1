@@ -21,5 +21,14 @@ public class FileServiceImpl implements FileService {
 	public int insertFile(Map map) {
 		return fileMapper.insertFile(map);
 	}
+	
+	public int insertMultiMediaImg(Map map) {
+		return fileMapper.insertMultiMediaImg(map);
+	}
+
+	@Override
+	public int insertMultiMediaFile(Map map) {
+		return fileMapper.insertMultiMediaFile(map);
+	}
 
 }

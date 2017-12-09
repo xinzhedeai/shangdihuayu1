@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="customMapper.CustomVoiceMapper">
+	<insert id="insertVoice" parameterType="Map">
+		insert into voice
+			(
+			voice_id    ,
+			voice_name  ,
+			create_date ,
+			album_id    ,
+			user_id     ,
+			play_count  ,
+			remark
+
+			)
+		values
+			(
+			#{voice_id},
+			#{multimedia_file_name},
+			NOW(),
+			#{album_id},
+			#{user_id},
+			0,
+			#{remark}
+			)
+	</insert>
+	<select id="getVoiceListByPage" parameterType="Map" resultType="Map">
+			SELECT
+				a.voice_id,
+				a.voice_name,
+				a.create_date,
+				a.user_id,
+				a.play_count,
+				a.remark,
+				a.album_id,
+				CONCAT(b_img.type,'/',b_img.module,'/',b_img.file_name) AS img_file_path,
+				CONCAT(b_multiMedia.type,'/',b_multiMedia.module,'/',b_multiMedia.file_name) AS multimeida_file_path,
+				c.album_name,
+				d.user_name
+			FROM
+				voice a
+			LEFT JOIN file b_img
+				ON 
+					b_img.voice_id = a.voice_id
+				AND
+					b_img.type = 'image'
+			LEFT JOIN file b_multiMedia
+				ON 
+					b_multiMedia.voice_id = a.voice_id
+				AND
+					b_multiMedia.type = 'multiMedia'
+			LEFT JOIN album c
+				ON
+					c.album_id = a.album_id
+			LEFT JOIN user d
+				ON
+					d.user_id = a.user_id
+
+
+		<where>
+			<if test="album_name != null and album_name != ''">
+				a.album_name like '%${album_name}%'
+			</if>
+		</where>
+	</select>
+	<select id="searchScripturesByDate" parameterType="Map" resultType="Integer">
+		SELECT  
+			substring(scripture_no, 2)<!-- 从第二个字符开始裁剪包含第二个 --> 
+		FROM
+		SCRIPTURE
+		<where>
+			<if test="type != null and type != ''">
+				type = #{type}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND create_date = #{createDate}
+			</if>
+		</where>
+	</select>
+
+</mapper>

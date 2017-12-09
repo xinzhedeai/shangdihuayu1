@@ -13,4 +13,6 @@ public interface UserService {
 	public Object getUserInfo(Map reqMap);
 
 	public EasyUIGridObj getUserListByPage(Map reqMap);
+
+	public List<Map> getUserAllList();
 }

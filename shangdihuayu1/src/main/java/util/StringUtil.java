@@ -1068,8 +1068,21 @@ public static String stringTransCharset(String str) {
 	}
 	return new_str;
 }    
-    
-
+/**
+ * 正则替换所有特殊字符
+ * @param str
+ * @return
+ */  
+public static String replaceSpecStr(String str){
+	if (null!=str && !"".equals(str.trim())) {
+//		String regEx="[\\s~·`!！@#￥$%^……&*（()）\\-——\\-_=+【\\[\\]】｛{}｝\\|、\\\\；;：:‘'“”\"，,《<。.》>、/？?]";
+		String regEx="[\\s~·`!！@#￥$%^……&*（()）\\-——\\-_=+【\\[\\]】｛{}｝\\|、\\\\；;：:‘'“”\"，,《<。》>、/？?]";//不包含.
+		Pattern p = Pattern.compile(regEx);
+		Matcher m = p.matcher(str);
+		return m.replaceAll("");
+	}
+	return null;
+}
 public static void main(String[] args) {
    System.out.println(isDigital("0001231是"));
 }

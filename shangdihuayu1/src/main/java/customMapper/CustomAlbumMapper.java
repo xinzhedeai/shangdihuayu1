@@ -8,4 +8,6 @@ public interface CustomAlbumMapper {
 
 	List<Map> getAlbumListByPage(Map map);
 
+	List<Map> getAllAlbumList();
+
 }

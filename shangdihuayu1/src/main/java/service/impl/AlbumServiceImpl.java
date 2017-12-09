@@ -32,5 +32,10 @@ public class AlbumServiceImpl implements AlbumService {
 		return obj;
 	}
 
+	@Override
+	public List<Map> getAllAlbumList() {
+		return albumMapper.getAllAlbumList();
+	}
+
 
 }

@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ public class UserServiceImpl implements UserService {
 		return customUserInfoMapper.checkUser(map);
 	}
 
-	public int checkUser(String userId, String pwd) {
+	public List<Map> getUserAllList() {
 		// TODO Auto-generated method stub
-		return 0;
+		return customUserInfoMapper.getUserAllList();
 	}
 
 	@Override

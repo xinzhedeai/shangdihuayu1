@@ -54,6 +54,7 @@ import pageModel.EasyUIGridObj;
 import pageModel.JsonResult;
 import service.AlbumService;
 import service.FileService;
+import service.VoiceService;
 import util.DateUtil;
 import util.MSG_CONST;
 import util.SpringUtils;
@@ -61,24 +62,29 @@ import util.StringUtil;
 
 @SuppressWarnings("rawtypes")
 @Controller
-@RequestMapping("/albumAction")
-public class AlbumAction {
+@RequestMapping("/voiceAction")
+public class VoiceAction {
 	public static Logger logger = Logger.getLogger(UserAction.class);
 
 	@Autowired
-	private AlbumService albumServiceImpl;
+	private VoiceService voiceServiceImpl;
 	@Autowired
 	private FileService fileServiceImpl;
 	@ResponseBody
-	@RequestMapping("/addAlbum")
-	public JsonResult addScripture(HttpSession session, HttpServletRequest req) throws Exception {
+	@RequestMapping("/addVoice")
+	public JsonResult addVoice(HttpServletRequest req) throws Exception {
 		JsonResult j = new JsonResult();
 		Map paramMap = new HashMap();
 		paramMap = SpringUtils.getParameterMap(req);
-		String album_id = StringUtil.converterToSpell(paramMap.get("album_name").toString());
-		paramMap.put("album_id", album_id);
+		String voice_id = paramMap.get("multimedia_file_name").toString();
+		voice_id = StringUtil.replaceSpecStr(voice_id);//去掉特殊字符
+		voice_id = StringUtil.converterToSpell(voice_id);//汉字变拼音
+//		voice_id = StringUtil.removeCommaChar(voice_id);//去掉逗号
+		paramMap.put("voice_id", voice_id);
 		try {
-			if (fileServiceImpl.insertFile(paramMap) > 0 && albumServiceImpl.insertAlbum(paramMap) > 0) {
+			if (voiceServiceImpl.insertVoice(paramMap) > 0
+					&& fileServiceImpl.insertMultiMediaImg(paramMap) > 0 
+					&& fileServiceImpl.insertMultiMediaFile(paramMap) > 0) {
 				j.setSuccess(true);
 				j.setMsg(MSG_CONST.ADDSUCCESS);
 			} else {
@@ -93,13 +99,12 @@ public class AlbumAction {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/getAlbumListByPage")
-	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
+	@RequestMapping("/getVoiceListByPage")
+	public JsonResult getVoiceListByPage(HttpServletRequest req) throws Exception{
 //		Thread.sleep(2000000000);
 		Map reqMap = SpringUtils.getParameterMap(req);
-		reqMap.put("rel_path", "/storage/upload/Img/");
 		JsonResult j = new JsonResult();
-		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) albumServiceImpl.getAlbumListByPage(reqMap);
+		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) voiceServiceImpl.getVoiceListByPage(reqMap);
 		if(easyUIGridObj != null){
 		
 			j.setSuccess(true);
@@ -108,28 +113,6 @@ public class AlbumAction {
 		}else{
 			j.setSuccess(false);
 			j.setMsg(MSG_CONST.READSUCCESS);
-		}
-		return j;
-	}
-	
-	/**
-	 * 获取全部专辑
-	 * @param req
-	 * @return
-	 * @throws Exception
-	 */
-	@ResponseBody
-	@RequestMapping("/getAllAlbumList")
-	public JsonResult getUserAllList(HttpServletRequest req) throws Exception{
-		JsonResult j = new JsonResult();
-		List<Map> list = albumServiceImpl.getAllAlbumList();
-		if(list != null){
-			j.setSuccess(true);
-			j.setMsg(MSG_CONST.READSUCCESS);
-			j.setResult(list);
-		}else{
-			j.setSuccess(false);
-			j.setMsg(MSG_CONST.READFAIL);
 		}
 		return j;
 	}

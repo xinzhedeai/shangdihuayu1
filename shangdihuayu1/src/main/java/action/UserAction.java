@@ -17,6 +17,7 @@ import normalPo.UserExample;
 import pageModel.EasyUIGridObj;
 import pageModel.JsonResult;
 import service.UserService;
+import util.MSG_CONST;
 import util.SpringUtils;
 @Controller
 @RequestMapping("/userAction")
@@ -57,11 +58,32 @@ public class UserAction extends BaseAction{
 		EasyUIGridObj easyUIGridObj = (EasyUIGridObj) userServiceImpl.getUserListByPage(reqMap);
 		if(easyUIGridObj != null){
 			j.setSuccess(true);
-			j.setMsg("登录成功！");
+			j.setMsg(MSG_CONST.READSUCCESS);
 			j.setResult(easyUIGridObj);
 		}else{
 			j.setSuccess(false);
-			j.setMsg("账号或密码错误！");
+			j.setMsg(MSG_CONST.READFAIL);
+		}
+		return j;
+	}
+	/**
+	 * 获取全部用户
+	 * @param req
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/getAllUserList")
+	public JsonResult getUserAllList(HttpServletRequest req) throws Exception{
+		JsonResult j = new JsonResult();
+		List<Map> list = userServiceImpl.getUserAllList();
+		if(list != null){
+			j.setSuccess(true);
+			j.setMsg(MSG_CONST.READSUCCESS);
+			j.setResult(list);
+		}else{
+			j.setSuccess(false);
+			j.setMsg(MSG_CONST.READFAIL);
 		}
 		return j;
 	}

@@ -1,0 +1,126 @@
+.validatebox-invalid, .textbox-invalid {
+	background-color: #FFFFFF;
+	border: 1px solid #A7A7A7;
+	box-shadow:0px 0px 5px 1px #A7A7A7;
+}
+.datagrid {
+	clear: both;
+/* 	margin-top: 47px; */
+}
+.datagrid .panel-body, .datagrid-header, div.datagrid-header table td {
+	background: none;
+}
+.popupWrapper .datagrid {
+	border-top: none;
+	width: 94.95%;
+	margin: 10px auto;
+}
+div.datagrid-header div.datagrid-cell {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color:rgb(69, 152, 170);/*SRSS*/
+}
+div.datagrid-header table td {
+	border-style: solid;
+	background-color: #f8f8f8;
+	font-weight: bold;
+}
+div.datagrid-header table {
+	height: 35px;
+}
+div.datagrid-header {
+	height: 34px;
+}
+div.datagrid-body div.datagrid-cell a {
+	cursor: pointer;
+	color: #4a4a4a;
+	text-decoration: underline;
+}
+div.datagrid-body div.datagrid-cell a:hover {
+	/* color: #4f87b6; */
+	color: #eb1d21;
+	text-shadow: 0 0 50px #eb1d21;
+}
+div.datagrid-body div.datagrid-cell {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+div.datagrid-body table td {
+	border-style: solid;
+}
+/* .datagrid-view .datagrid-header table.datagrid-htable td {
+	text-align: center;
+} */
+div.datagrid-empty {
+	text-align: center;
+	margin-top: -12px;
+}
+div.datagrid-empty img {
+	width: 52px;
+	height: 83px;
+}
+div.datagrid-empty p {
+	font-size: 14px;
+	padding-top: 2px;
+}
+.pagerButtons {
+	padding: 0 5px;
+}
+span.switchbutton-on {
+	background: #5bda4d;
+	color: #fff;
+}
+span.switchbutton-handle {
+	border-radius: 20px;
+}
+span.switchbutton {
+	border-radius: 15px;
+}
+span.datagrid-sort-icon {
+	font-family: Simsun;
+}
+.easyui-datebox {
+	width: 80px;
+}
+span.datebox {
+	border: 1px solid #a7a7a7;
+}
+div.easyui-tabs {
+	clear: both;
+}
+div.easyui-tabs .tabs-panels .panel {
+	margin: 0 10px 10px 10px;
+}
+.panelElm .panelBody .datagrid, .combo-panel .datagrid {
+	border-top: none;
+	margin-top: 0px;
+}
+.rightPart .panelElm .panelBody .datagrid .datagrid-wrap {
+	border: 0;
+}
+.leftPart .datagrid {
+	margin-top: 0px;
+}
+/*针对firefox*/
+@-moz-document url-prefix() {
+   .leftPart .datagrid {
+		margin-top: -2px;
+	}
+}
+/* span.textbox.spinner {
+	border-color: #A7A7A7;
+}
+span.textbox.spinner input.textbox-text {
+	font-size: 13px;
+}
+span.textbox.spinner span.textbox-addon {
+	top: 3px;
+} */
+/* .datagrid .panel-body {border-right:none;} */  /* 去外侧边框 */
+.datagrid .datagrid-view2 tr td:last-child {border-right:none;}  /* 去内侧边框 */
+.datagrid .datagrid-pager {border-top:none !important;}  /* 保留底部上边框 */
+/* .datagrid .datagrid-body tr:last-child td {border-bottom:none;} */  /* 保留底部下边框 */
+
+/*srss*/
+.panel-title{color:rgb(71, 166, 189);}
+

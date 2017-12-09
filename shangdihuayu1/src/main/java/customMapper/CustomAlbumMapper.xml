@@ -37,19 +37,12 @@
 			</if>
 		</where>
 	</select>
-	<select id="searchScripturesByDate" parameterType="Map" resultType="Integer">
+	<select id="getAllAlbumList" resultType="Map">
 		SELECT  
-			substring(scripture_no, 2)<!-- 从第二个字符开始裁剪包含第二个 --> 
+			album_id,
+			album_name
 		FROM
-		SCRIPTURE
-		<where>
-			<if test="type != null and type != ''">
-				type = #{type}
-			</if>
-			<if test="createDate != null and createDate != ''">
-				AND create_date = #{createDate}
-			</if>
-		</where>
+			album
 	</select>
 
 </mapper>

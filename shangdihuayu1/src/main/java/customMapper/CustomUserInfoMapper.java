@@ -9,4 +9,6 @@ public interface CustomUserInfoMapper {
 	Object getUserInfo(Map reqMap);
 	
 	List<Map> getUserListByPage();
+
+	List<Map> getUserAllList();
 }

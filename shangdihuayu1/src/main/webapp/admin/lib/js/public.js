@@ -55,3 +55,37 @@ util.ajaxPostCus = function(url, reqParams, callback) {
         }
     });
 }
+util.getUserList = function(){
+	$('.user_id').combobox({//国家列表获取
+	    textField: 'user_name',
+	    valueField: 'user_id',
+	    url : contextPath + '/userAction/getAllUserList.action',
+	    loadFilter : function(data) {
+			var result = data.result || [];
+        	return result;
+		},
+		 onLoadSuccess: function () { //数据加载完毕事件
+         },
+		onSelect:function(data){ 
+		}
+	});
+	console.log(this);
+	return this;
+}
+
+util.getAlbumList = function(){
+	$('.album_id').combobox({//所有专辑列表
+	    textField: 'album_name',
+	    valueField: 'album_id',
+	    url : contextPath + '/albumAction/getAllAlbumList.action',
+	    loadFilter : function(data) {
+			var result = data.result || [];
+        	return result;
+		},
+		 onLoadSuccess: function () { //数据加载完毕事件
+         },
+		onSelect:function(data){ 
+		}
+	});
+	return this;
+}

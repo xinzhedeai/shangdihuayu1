@@ -39,4 +39,11 @@
 		 	</if> -->
 	 	</where>	
 	 </select>
+	 <select id="getUserAllList"  parameterType="Map" resultType="Map">
+		select
+			user_id        ,
+			user_name      
+		from
+			user
+	 </select>
 </mapper>

@@ -29,5 +29,63 @@
 			'11'
 			)
 	</insert>
+	<!-- 添加主播音乐所属图片 -->
+	<insert id="insertMultiMediaImg" parameterType="Map">
+			insert into file
+			(
+			file_id             ,
+			module              ,
+			album_id            ,
+			voice_id            ,
+			type                ,
+			file_name           ,
+			file_extension      ,
+			file_size           ,
+			upload_time         ,
+			file_content_type
+			)
+		values
+			(
+			UUID(),
+			#{module},
+			#{album_id},
+			#{voice_id},
+			#{type},
+			#{file_name},
+			'11',
+			'11',
+			NOW(),
+			'11'
+			)
+	</insert>
+	<!-- 插入多媒体文件 -->
+	<insert id="insertMultiMediaFile" parameterType="Map">
+			insert into file
+			(
+			file_id             ,
+			module              ,
+			album_id            ,
+			voice_id            ,
+			type                ,
+			file_name           ,
+			file_extension      ,
+			file_size           ,
+			upload_time         ,
+			file_content_type
+			)
+		values
+			(
+			UUID(),
+			#{multimedia_module},
+			#{album_id},
+			#{voice_id},
+			#{multimedia_type},
+			#{multimedia_file_name},
+			'11',
+			'11',
+			NOW(),
+			'11'
+			)
+	</insert>
 
 </mapper>

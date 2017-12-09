@@ -15,8 +15,10 @@
 
 
 	<!-- *****前台管理**** -->
-	<!-- 经文增删改查管理 -->
+	<!-- 专辑管理 -->
 	<bean id="albumService" class="service.impl.AlbumServiceImpl"/>
+	<!-- 主播音频管理 -->
+	<bean id="voiceService" class="service.impl.VoiceServiceImpl"/>
 	<!-- 用户管理 -->
 	<bean id="userService" class="service.impl.UserServiceImpl"/>
 	<!-- 文件管理 -->

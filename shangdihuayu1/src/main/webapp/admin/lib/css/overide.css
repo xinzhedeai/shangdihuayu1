@@ -1,2 +1,7 @@
 /*重写bootstrap框架样式*/
 .container{width: 100%;}
+
+/*重写easyui框架样式*/
+.textbox, .textbox-text{width:auto !important;}
+.textbox, .textbox-text, .textbox-icon{height:35px !important;}
+.textbox-text{line-height:35px !important;}

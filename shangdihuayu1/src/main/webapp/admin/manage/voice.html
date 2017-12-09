@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>上帝话语-音频信息管理</title>
+		<script type="text/javascript" src="../lib/js/includeHeadBackend.js"></script>
+		<script type="text/javascript" src="voice.js"></script>
+	</head>
+	<body>
+		<header class="container">
+			<form id="searchForm" style="width:100%;">
+				<div class="searchBtn">
+					<button type="button" class="btn btn-warning">查询</button>
+					<button type="button" class="btn btn-error">清空</button>
+				</div>
+				<table class="table table-bordered">
+						<col width="120" />
+						<col width="250" />
+						<col width="120" />
+						<col width="250" />
+						<col width="120" />
+						<col width="250" />
+					<tbody>
+						<tr>
+							<td class="i18n" name="comName_zh">主播名称:</td>
+							<td width="200px"><input type="text" class="form-control user_id" /></td>
+							<td class="i18n" name="comName_en">所属专辑:</td>
+							<td><input type="text" class="form-control" name="company_nm_en" /></td>
+							<td class="i18n" name="comName_jp">日期:</td>
+							<td><input type="text" class="form-control" name="company_nm_jp" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</header>
+		<article class="container">
+			<div class="operateBtn">
+				<button type="button" class="btn btn-success" id="addVoiceBtn">增加</button>
+				<button type="button" class="btn btn-error">删除</button>
+			</div>
+			<table id="voiceDatagrid"></table>
+		</article>
+		<footer>哈利路亚！赞美我的神！O(∩_∩)O哈哈~</footer>
+		<!-- 添加专辑模态框 -->
+		<div class="modal fade" id="addVoiceModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close btnClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">主播音频添加</h4>
+					</div>
+					<div class="modal-body">
+						<form class="voice_form">
+							<div class="form-group">
+								<label>所属专辑</label> 
+								<input type="text" name="album_id" class="form-control album_id">
+							</div>
+							<div class="form-group">
+								<label>主播名称</label> 
+								<input type="text" name="user_id" class="form-control user_id">
+							</div>
+							<div class="form-group">
+								<label>备注</label>
+								<textarea class="form-control" rows="3" name="remark"></textarea>
+							</div>
+							<div class="form-group">
+								<label>专辑写真</label> 
+								<div class="pic_preview_div"></div>
+								<input type="button" id="upload_voice_pic_btn" class="btn btn-primary btn-sm" value="上传专辑写真">
+							</div>
+							<div class="form-group">
+								<label>音频写真</label> 
+								<div class="multiMedia_preview_div"></div>
+								<input type="button" id="upload_multiMedia_pic_btn" class="btn btn-primary btn-sm" value="上传专辑写真">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">				
+						<button type="button" class="btn btn-info" id="addOk" >确认</button>
+						<button type="button" class="btn btn-info hidden" id="modifyOk">确认</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 上传图片模态框 -->
+		<div class="modal fade upload-modal" id="upload_img_modal">
+			<div class="modal-dialog formModal">
+				<div class="modal-content">
+					<div class="modal-header uploadModalHeader">
+						<button type="button" class="upload close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title" id="myModalLabel">上传图片</h3>
+					</div>
+					<div class="modal-body uploadModalBody" style="padding: 0;">
+						<div id="upload_img_div" extensions="jpg, png, gif"
+							size="3mb" headtitle="请选择图片文件"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+		<!-- 上传视频模态框 -->
+		<div class="modal fade upload-modal" id="upload_multiMedia_modal">
+			<div class="modal-dialog formModal">
+				<div class="modal-content">
+					<div class="modal-header uploadModalHeader">
+						<button type="button" class="upload close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title" id="myModalLabel">上传音频</h3>
+					</div>
+					<div class="modal-body uploadModalBody" style="padding: 0;">
+						<div id="upload_multiMedia_div" extensions="mp3"
+							size="30mb" headtitle="请选择音频"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+	</body>
+</html>
