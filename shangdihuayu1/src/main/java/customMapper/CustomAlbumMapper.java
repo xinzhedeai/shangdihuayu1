@@ -8,7 +8,7 @@ public interface CustomAlbumMapper {
 
 	List<Map> getAlbumListByPage(Map map);
 
-	List<Map> getAllAlbumList();
+	List<Map> getAllAlbumList(Map map);
 
 	int insertAlbumLv1(Map paramMap);
 

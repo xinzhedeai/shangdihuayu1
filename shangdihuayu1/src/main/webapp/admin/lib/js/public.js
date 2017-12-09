@@ -82,6 +82,27 @@ util.getAlbumList = function(){
 			var result = data.result || [];
         	return result;
 		},
+		onLoadSuccess: function () { //数据加载完毕事件
+         },
+		onSelect:function(data){ 
+			var url = contextPath + '/albumAction/getAllAlbumList.action?parent_id=' + data.album_id; 
+			$('.album_id_lv2').combobox('clear').combobox('reload', url);; //清除原来的数据重新载入数据
+		}
+	});
+	return this;
+}
+/**
+ * 获取二级专辑
+ */
+util.getAlbumLv2List = function(){
+	$('.album_id_lv2').combobox({//所有专辑列表
+	    textField: 'album_name',
+	    valueField: 'album_id',
+//	    url : contextPath + '/albumAction/getAllAlbumList.action',
+	    loadFilter : function(data) {
+			var result = data.result || [];
+        	return result;
+		},
 		 onLoadSuccess: function () { //数据加载完毕事件
          },
 		onSelect:function(data){ 

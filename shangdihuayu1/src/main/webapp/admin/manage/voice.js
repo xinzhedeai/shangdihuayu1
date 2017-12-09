@@ -12,7 +12,7 @@ $(function() {
 		addVoiceModal : $('#addVoiceModal'),
 		voice_form : $('.voice_form'),
 	}
-	util.getUserList().getAlbumList();
+	util.getUserList().getAlbumList().getAlbumLv2List();
 	$('#addVoiceBtn').click(function(){
 		$voice.selector.addVoiceModal.modal();
 	});
@@ -23,16 +23,24 @@ $(function() {
 	$('#upload_voice_pic_btn').click(function(){//上传音频的背景图片
 		$('#upload_img_modal').modal();
 		$('#upload_img_div').fileUpload();
-		var album = $('.album_id', '#addVoiceModal').combobox('getText');
-		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' +  encodeURIComponent(album);
+		
+		var album_id_lv1 = $('#album_id_lv1', '#addVoiceModal').combobox('getText'),
+		album_id_lv2 = $('#album_id_lv2', '#addVoiceModal').combobox('getText'),
+		module = album_id_lv2 ? encodeURIComponent(album_id_lv1 + '/' + album_id_lv2) : encodeURIComponent(album_id_lv1);
+		
+//		var album = $('.album_id', '#addVoiceModal').combobox('getText');
+		var url =  contextPath + '/uploadAction/uploadFile.action?type=image&module=' + module;
 		$('#upload_img_div').plupload('getUploader').setOption('url', url);
 	});
 	
 	$('#upload_multiMedia_pic_btn').click(function(){
 		$('#upload_multiMedia_modal').modal();
 		$('#upload_multiMedia_div').fileUpload();
-		var album = $('.album_id', '#addVoiceModal').combobox('getText');
-		var url =  contextPath + '/uploadAction/uploadFile.action?type=multiMedia&module=' + encodeURIComponent(album);
+//		var album = $('.album_id', '#addVoiceModal').combobox('getText');
+		var album_id_lv1 = $('#album_id_lv1', '#addVoiceModal').combobox('getText'),
+			album_id_lv2 = $('#album_id_lv2', '#addVoiceModal').combobox('getText'),
+			module = album_id_lv2 ? encodeURIComponent(album_id_lv1 + '/' + album_id_lv2) : encodeURIComponent(album_id_lv1);
+		var url =  contextPath + '/uploadAction/uploadFile.action?type=multiMedia&module=' + module;
 		$('#upload_multiMedia_div').plupload('getUploader').setOption('url', url);
 	});
 	var voiceColumns = [{

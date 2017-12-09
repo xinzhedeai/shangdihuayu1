@@ -39,10 +39,23 @@
 	</select>
 	<select id="getAllAlbumList" resultType="Map">
 		SELECT  
-			album_id,
-			album_name
+			a.album_id,
+			a.album_name
 		FROM
-			album
+			album a
+		<where>
+			<!-- <if test="parent_id != null and parent_id != ''">
+				a.parent_id = #{parent_id}
+			</if> -->
+			 <choose>
+                <when test="parent_id != null and parent_id != ''">
+                   a.parent_id = #{parent_id}
+                </when>
+                <otherwise>
+                   a.parent_id IS NULL
+                </otherwise>
+            </choose>
+		</where>
 	</select>
 	<!-- 添加一级专辑 -->
 	<insert id="insertAlbumLv1" parameterType="Map">

@@ -79,7 +79,17 @@ public class VoiceAction {
 		String voice_id = paramMap.get("multimedia_file_name").toString();
 		voice_id = StringUtil.replaceSpecStr(voice_id);//去掉特殊字符
 		voice_id = StringUtil.converterToSpell(voice_id);//汉字变拼音
-//		voice_id = StringUtil.removeCommaChar(voice_id);//去掉逗号
+		
+		int flag = 1;//flag为1时则表示为添加一级专辑；2时为二级专辑；默认为1级专辑
+		flag = paramMap.get("album_id_lv2").toString().isEmpty() ? 1 : 2;
+		String album_id_lv1_pinyin = "", album_id_lv2_pinyin = "";
+		album_id_lv1_pinyin = StringUtil.converterToSpell(paramMap.get("album_id_lv1").toString());
+		//当音频为第一级专辑下的，那么则写入一级专辑的ID，否则写入二级专辑的ID， 使用相同的参数值album_id; 
+		paramMap.put("album_id", album_id_lv1_pinyin);
+		if(flag == 2){
+			album_id_lv2_pinyin = StringUtil.converterToSpell(paramMap.get("album_id_lv2").toString());
+			paramMap.put("album_id", album_id_lv2_pinyin);
+		}
 		paramMap.put("voice_id", voice_id);
 		try {
 			if (voiceServiceImpl.insertVoice(paramMap) > 0

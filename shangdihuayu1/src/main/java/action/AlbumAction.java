@@ -133,7 +133,8 @@ public class AlbumAction {
 	@RequestMapping("/getAllAlbumList")
 	public JsonResult getUserAllList(HttpServletRequest req) throws Exception{
 		JsonResult j = new JsonResult();
-		List<Map> list = albumServiceImpl.getAllAlbumList();
+		Map reqMap = SpringUtils.getParameterMap(req);
+		List<Map> list = albumServiceImpl.getAllAlbumList(reqMap);
 		if(list != null){
 			j.setSuccess(true);
 			j.setMsg(MSG_CONST.READSUCCESS);
