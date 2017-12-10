@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="customMapper.CustomVoiceMapper">
 	<insert id="insertVoice" parameterType="Map">
-		insert into voice
+		replace into voice
 			(
 			voice_id    ,
 			voice_name  ,
@@ -22,7 +22,50 @@
 			#{user_id},
 			0,
 			#{remark}
+			);
+			<!-- insert into album
+			(
+			album_id,
+			album_name,
+			create_time,
+			remark,
+			parent_id
 			)
+		values
+			(
+			#{album_id},
+			#{album_name},
+			NOW(),
+			#{remark},
+			#{parent_id}
+			);
+						insert into file
+			(
+			file_id             ,
+			module              ,
+			album_id            ,
+			voice_id            ,
+			type                ,
+			file_name           ,
+			file_extension      ,
+			file_size           ,
+			upload_time         ,
+			file_content_type
+			)
+		values
+			(
+			UUID(),
+			#{module},
+			#{album_id},
+			'11',
+			#{type},
+			#{file_name},
+			'11',
+			'11',
+			NOW(),
+			'11'
+			) -->
+			
 	</insert>
 	<select id="getVoiceListByPage" parameterType="Map" resultType="Map">
 			SELECT

@@ -2,19 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="customMapper.CustomAlbumMapper">
 	<insert id="insertAlbum" parameterType="Map">
-		insert into album
+		replace into album
 			(
 			album_id,
 			album_name,
 			create_time,
-			remark
+			remark,
+			parent_id
 			)
 		values
 			(
 			#{album_id},
 			#{album_name},
 			NOW(),
-			#{remark}
+			#{remark},
+			#{parent_id}
 			)
 	</insert>
 	<select id="getAlbumListByPage" parameterType="Map" resultType="Map">
