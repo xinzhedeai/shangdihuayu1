@@ -44,11 +44,16 @@ $(function() {
 		sortable : true,
 	
 	}, {
-		field : 'album_name',
-		title : '专辑名称',
+		field : 'album_lv1_name',
+		title : '一级专辑名称',
 		width : 100,
 		sortable : true,
-	}, {
+	},  {
+		field : 'album_lv2_name',
+		title : '二级专辑名称',
+		width : 100,
+		sortable : true,
+	},{
 		field : 'album_img',
 		title : '专辑图片',
 		width : 100,

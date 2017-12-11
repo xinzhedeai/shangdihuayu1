@@ -127,11 +127,6 @@ $(function() {
 	$voice.selector.voiceDatagrid.datagrid(voiceOptions);
 });
 
-function reloadClear(){
-	$('#az-user-tableList').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections').datagrid("clearChecked");
-	//$('#az-user-tableList').datagrid("reload",{ });
-	$('#az-user-tableList').datagrid('load', $.serializeObject($('#z-user-searchForm')));
-}
 
 var $voice = {
 	addVoice : function(){

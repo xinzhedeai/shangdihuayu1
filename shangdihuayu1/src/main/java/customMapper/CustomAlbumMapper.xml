@@ -22,20 +22,23 @@
 	<select id="getAlbumListByPage" parameterType="Map" resultType="Map">
 		SELECT 
 			a.album_id,
-			a.album_name,
+			a.album_name AS album_lv1_name,
 			a.create_time,
 			a.remark,
-<!-- 			CONCAT(#{rel_path}, b.album_id,'/',b.file_name) as album_img -->
-<!-- 			b.file_name as album_img	 -->				
-			CONCAT(b.type, '/', b.module, '/', b.file_name) as album_img																																											
+			CONCAT(b.type, '/', b.module, '/', b.file_name) as album_img,
+			c.album_name AS album_lv2_name																																									
 		 FROM
 			album a
 		LEFT JOIN
 		file b
-			ON 	a.album_id = b.album_id
+			ON 	a.album_id = b.album_id AND b.voice_id IS NULL
+		LEFT JOIN
+			album c
+		ON c.parent_id = a.album_id
 		<where>
 			<if test="album_name != null and album_name != ''">
-				a.album_name like '%${album_name}%'
+				<!-- a.album_name like '%${album_name}%' -->
+				a.album_name LIKE '%${album_name}%' or c.album_name = '%${album_name}%'
 			</if>
 		</where>
 	</select>

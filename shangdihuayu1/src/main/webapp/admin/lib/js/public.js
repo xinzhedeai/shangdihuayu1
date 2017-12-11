@@ -180,7 +180,7 @@ $(function(){//页面加载后常用公用功能提取
 		util.datagrid('RELOAD');
 	});
 	$(window).resize(function() {//调整窗体大小同时也调整网格的大小
-		setTimeout(util.datagrid('RESIZE'), 300);
+		setTimeout(util.datagrid('RESIZE'), 600);
 	});	
 	//回到顶部公用代码
 	$('body').append('<a class="goTop"></a>');

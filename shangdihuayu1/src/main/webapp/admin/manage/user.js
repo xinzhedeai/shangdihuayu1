@@ -88,22 +88,7 @@ $(function() {
 		}
 	};
 	$user.selector.userDatagrid.datagrid(userOptions);
-	
-	/*$('.btn-success', '#searchForm').click(function(){
-		console.info('***按条件搜索***');
-		$user.selector.userDatagrid.datagrid('load', $.serializeObject($('#searchForm')));
-	});
-	$('.btn-danger', '#searchForm').click(function(){
-		$('#searchForm').form('reset');
-		$user.selector.userDatagrid.datagrid('load', $.serializeObject($('#searchForm')));
-	});*/
 });
-
-function reloadClear(){
-	$('#az-user-tableList').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections').datagrid("clearChecked");
-	//$('#az-user-tableList').datagrid("reload",{ });
-	$('#az-user-tableList').datagrid('load', $.serializeObject($('#z-user-searchForm')));
-}
 
 var $user = {
 	userInfoDatagrid : $('#userInfoDatagrid'),
