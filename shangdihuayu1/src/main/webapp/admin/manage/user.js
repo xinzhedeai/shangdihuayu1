@@ -7,12 +7,17 @@
 'use strict';
 
 $(function() {
+	$user.selector = {
+		userDatagrid : $('#userDatagrid'),
+		addUserModal : $('#addUserModal'),
+		user_form : $('.user_form'),
+	}
 	var userColumns = [{
 		field : 'ck',
 		checkbox : true
 	}, {
 		field : 'user_id',
-		title : '用户名',
+		title : '用户ID',
 		width : 200,
 		sortable : true,
 	
@@ -59,30 +64,39 @@ $(function() {
 		url : contextPath + '/userAction/getUserListByPage.action',
 		columns: [userColumns],
 		pagination : true,
-		fitColumns : false,
+		fitColumns : true,
 		rownumbers : true,
 		checkOnSelect:false,
 //		width : 1307,
-//		sortOrder : 'desc',
 		idField : 'user_id',
-		pageSize : 1,
+		pageSize : 5,
 		pageNumber : 1,
 //		frozenColumns : [ ],
-		pageList: [1],
+		pageList: [5],
 		loadFilter : function(data) {
 			if (data != null) {
 				if(data.result.rows != null){
-					return data.result;
+					data = data.result;
 				}else{
 					layer.alert(REMIND_MSG.NO_DATA);
-					$user.userInfoDatagrid.datagrid('loadData', { total: 0, rows: [] });
+					data = EMPTY_DATA;
 				}
 			} /*else {
 				window.location.href='../login.html';
 			}*/
+			return data;
 		}
 	};
-	$('#userInfoDatagrid').datagrid(userOptions);
+	$user.selector.userDatagrid.datagrid(userOptions);
+	
+	/*$('.btn-success', '#searchForm').click(function(){
+		console.info('***按条件搜索***');
+		$user.selector.userDatagrid.datagrid('load', $.serializeObject($('#searchForm')));
+	});
+	$('.btn-danger', '#searchForm').click(function(){
+		$('#searchForm').form('reset');
+		$user.selector.userDatagrid.datagrid('load', $.serializeObject($('#searchForm')));
+	});*/
 });
 
 function reloadClear(){

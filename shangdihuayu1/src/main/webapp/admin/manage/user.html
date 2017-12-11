@@ -13,8 +13,8 @@
 		<header class="container">
 			<form id="searchForm">
 				<div class="searchBtn">
-					<button type="button" class="btn btn-warning">查询</button>
-					<button type="button" class="btn btn-error">清空</button>
+					<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-search">查询</span></button>
+					<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh">清空</span></button>
 				</div>
 				<table class="table table-bordered">
 					<col width="120" />
@@ -27,12 +27,12 @@
 						<col width="480" />-->
 					<tbody>
 						<tr>
-							<td class="i18n" name="comName_zh">公司名称(CN):</td>
-							<td><input type="text" class="form-control" name="company_nm_cn" /></td>
-							<td class="i18n" name="comName_en">公司名称(EN):</td>
+							<td>主播名称:</td>
+							<td><input type="text" class="form-control" name="user_name" /></td>
+						<!-- 	<td class="i18n" name="comName_en">公司名称(EN):</td>
 							<td><input type="text" class="form-control" name="company_nm_en" /></td>
 							<td class="i18n" name="comName_jp">公司名称(JP):</td>
-							<td><input type="text" class="form-control" name="company_nm_jp" /></td>
+							<td><input type="text" class="form-control" name="company_nm_jp" /></td> -->
 						</tr>
 					</tbody>
 				</table>
@@ -40,23 +40,11 @@
 		</header>
 		<article class="container">
 			<div class="operateBtn">
-				<button type="button" class="btn btn-success">增加</button>
-				<button type="button" class="btn btn-error">删除</button>
+				<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus">增加</span></button>
+				<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove">删除</span></button>
 			</div>
-			<table id="userInfoDatagrid"></table>
-			<!-- <table class="easyui-datagrid" title="Basic DataGrid" style="" data-options="singleSelect:true,collapsible:true,pagination:true, fitColumns : true,url:'datagrid_data1.json',method:'get'">
-				<thead>
-					<tr>
-						<th data-options="field:'itemid',width:80">Item ID</th>
-						<th data-options="field:'productid',width:100">Product</th>
-						<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-						<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-						<th data-options="field:'attr1',width:250">Attribute</th>
-						<th data-options="field:'status',width:60,align:'center'">Status</th>
-					</tr>
-				</thead>
-			</table> -->
+			<table id="userDatagrid"></table>
 		</article>
-		<footer>哈利路亚！赞美我的神！O(∩_∩)O哈哈~</footer>
+		<footer>哈利路亚！yimaneili O(∩_∩)O哈哈~</footer>
 	</body>
 </html>

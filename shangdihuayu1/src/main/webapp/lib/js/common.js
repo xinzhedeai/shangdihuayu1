@@ -1044,7 +1044,7 @@ function sum(a, b){
 }
 
 //页面回到顶部 jianghaipeng
-var scrolltotop={//回到顶部
+/*var scrolltotop={//回到顶部
 		setting:{
 			startline:100, //起始行
 			scrollto:0, //滚动到指定位置
@@ -1100,4 +1100,4 @@ var scrolltotop={//回到顶部
 			});
 		}
 	};
-	scrolltotop.init();
+	scrolltotop.init();*/

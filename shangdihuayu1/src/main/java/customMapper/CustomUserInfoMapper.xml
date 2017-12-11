@@ -32,7 +32,7 @@
 			user
    		<where>
 		 	<if test="user_name != null and user_name != ''">
-			 	and US_NAME like '%${nickName}%'
+			 	and user_name like '%${user_name}%'
 		 	</if>
 		 <!-- 	<if test="order != null and sort != null">
 			 	ORDER BY ${sort} ${order}

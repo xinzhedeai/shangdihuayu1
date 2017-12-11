@@ -13,12 +13,22 @@ var REMIND_MSG = {
 	'NO_DATA' : '没有相关数据'	
 };
 
+/**
+ * datagrid查询数据为空时，返回符合标准的数据为空的结构对象
+ */
+var EMPTY_DATA = {
+		'total' : 0,
+		'summarys' : null,
+		'rows' : []
+	};
 var userInfo = getCookie('userInfo');
 if (!userInfo) {
 	window.parent.location.href = '/admin/login.html';
 }else{
 	userInfo = $.parseJSON(userInfo);
 }
+
+
 
 /*$.ajaxPrefilter( function( options, originalOptions, jqXHR ) { 
 	var accessToken = getCookie('access-token'), lang = getCookie('userLanguage');
@@ -110,3 +120,74 @@ util.getAlbumLv2List = function(){
 	});
 	return this;
 }
+/**
+ * 重新加载网格数据并清空已选择的数据
+ * @param type{ALL:重新加载并清空选中状态 CLEAR:只清空选中状态 RELOAD:只重新加载网格数据}
+ * @returns {调用该方法的原对象}
+ */
+util.datagrid = function(type){
+	var $datagrid = $('article').find('div.datagrid-view2').next();
+	switch (type){
+		case 'ALL':
+			$datagrid.datagrid('uncheckAll').datagrid('unselectAll')
+			 .datagrid('clearSelections').datagrid("clearChecked")
+			 .datagrid('load', $.serializeObject($('#searchForm')));
+			break;
+		case 'RELOAD':
+			$datagrid.datagrid('load', $.serializeObject($('#searchForm')));
+			break;
+		case 'CLEAR':
+			$datagrid.datagrid('uncheckAll').datagrid('unselectAll')
+			 		.datagrid('clearSelections').datagrid("clearChecked");
+			break;
+		case 'RESIZE':
+			$datagrid.datagrid('resize');
+			break;
+		default :
+			$datagrid.datagrid('uncheckAll').datagrid('unselectAll')
+			 .datagrid('clearSelections').datagrid("clearChecked")
+			 .datagrid('load', $.serializeObject($('#searchForm')));
+			break;
+	}
+	return this;
+}
+/**
+ * targetForm:表单对象选择字符串
+ * type:表单操作类型
+ * data:待填充到表单的数据对象
+ */
+util.form = function(targetForm, type, data){
+	var $form = $(targetForm);
+	switch (type){
+		case 'RESET':
+			$form.form('reset');
+			break;
+		case 'LOAD':
+			$form.form('load', data);
+			break;
+		case 'CLEAR':
+			$form.form('clear');
+			break;
+	}
+	return this;
+}
+$(function(){//页面加载后常用公用功能提取
+	$('.btn-success', '#searchForm').click(function(){//按条件搜索
+		util.datagrid('RELOAD');
+	});
+	$('.btn-danger', '#searchForm').click(function(){//清空表单
+		util.form('#searchForm', 'RESET');
+		util.datagrid('RELOAD');
+	});
+	$(window).resize(function() {//调整窗体大小同时也调整网格的大小
+		setTimeout(util.datagrid('RESIZE'), 300);
+	});	
+	//回到顶部公用代码
+	$('body').append('<a class="goTop"></a>');
+    $(window).scroll(function () {
+        $(document).scrollTop() != 0 ? $(".goTop").fadeIn("slow") : $(".goTop").fadeOut("slow");
+    });
+	$(".goTop").click(function () {
+	    $("html, body").animate({ scrollTop: 0 }, 300);//经过300ms回到顶部
+	});
+})
