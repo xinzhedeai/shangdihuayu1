@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,11 +21,17 @@ import pageModel.JsonResult;
 import service.UserService;
 import util.MSG_CONST;
 import util.SpringUtils;
-@Controller
+@Component
 @RequestMapping("/userAction")
 public class UserAction extends BaseAction{
 	
 	public static Logger logger  = Logger.getLogger(UserAction.class);
+	
+	@Value("${path}")
+	private String path;
+	
+	@Value("${jdbc.driver}")
+	private String driver;
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -52,6 +60,11 @@ public class UserAction extends BaseAction{
 	@ResponseBody
 	@RequestMapping("/getUserListByPage")
 	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
+		System.out.println("*******************************");
+		System.out.println("spring注入路径" + path);
+		System.out.println("spring注入路径driver*****" + driver);
+		System.out.println("*******************************");
+//		System.out.println(userServiceImpl.getClass().getField("path"));
 //		Thread.sleep(2000000000);
 		Map reqMap = SpringUtils.getParameterMap(req);
 		JsonResult j = new JsonResult();

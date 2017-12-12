@@ -13,11 +13,11 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
 		
-<import resource="applicationContext-dao.xml" /> 
-<import resource="applicationContext-service.xml" /> 
+<!-- <import resource="applicationContext-dao.xml" /> 
+<import resource="applicationContext-service.xml" />  -->
 
 <!-- 加载配置文件 -->
-<context:property-placeholder location="classpath:db.properties"/>
+<!-- <context:property-placeholder location="classpath:db.properties"/> -->
 <!-- 数据库连接池 -->
 <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
        <property name="driverClassName" value="${jdbc.driver}"/>
@@ -28,6 +28,7 @@
 		<property name="maxIdle" value="5"/>
 
 </bean> -->
+	<bean id="userAction" class="action.UserAction"></bean>
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
               <property name="driverClassName" value="${jdbc.driver}"/>
 		<property name="url" value="${jdbc.url}"/>
@@ -92,10 +93,14 @@
 <!-- 加载properties文件 -->
 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
-        <array>
+        <list>
+   			<value>classpath:db.properties</value>
             <value>classpath:config/path.properties</value>
-        </array>
+        </list>
     </property>
+  <!--   <property name="location">
+            <value>classpath:config/path.properties</value>
+    </property> -->
     <property name="fileEncoding" value="UTF-8"/>
 </bean>
 

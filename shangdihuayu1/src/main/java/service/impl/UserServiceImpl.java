@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import pageModel.EasyUIGridObj;
 import customMapper.CustomUserInfoMapper;
@@ -16,6 +17,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private CustomUserInfoMapper customUserInfoMapper;
 	
+	@Value("${jdbc.driver}")
+	private String driver;
+	@Value("${path}")
+	private String path;
 	
 	public int checkUser(Map map) throws Exception {
 		return customUserInfoMapper.checkUser(map);
@@ -34,6 +39,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public EasyUIGridObj getUserListByPage(Map reqMap) {
 		EasyUIGridObj obj = null;
+		System.out.println("*******************************");
+		System.out.println("springSERVICE注入路径path*****" + path);
+		System.out.println("springSERVICE注入路径driver*****" + driver);
+		System.out.println("*******************************");
 		try {
 			obj = PageUtil.searchByPage(customUserInfoMapper, reqMap, "getUserListByPage");
 		} catch (SysException e) {

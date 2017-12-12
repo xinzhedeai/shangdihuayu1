@@ -12,12 +12,14 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
-
-	<!-- 组件扫描 扫描所有标记@Controller类，由于使用自动扫描所以action类不用在spring配置文件中配置 -->
-	<context:component-scan base-package="action" />
-<!-- 	<context:component-scan base-package="mAction" /> -->
+	<!-- 必须提前向Spring容器注册 各类注解@auto -->
+	<context:annotation-config/>
 	<!-- 使用 mvc:annotation-driven代替上边定义的处理器适配器和处理器映射器 -->
 	<mvc:annotation-driven />
+	<!-- 组件扫描 扫描所有标记@Controller类，由于使用自动扫描所以action类不用在spring配置文件中配置 -->
+	<context:component-scan base-package="action" />
+	<!-- <context:component-scan base-package="mAction" /> -->
+	
 	<!-- Spring MVC JSON配置 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">

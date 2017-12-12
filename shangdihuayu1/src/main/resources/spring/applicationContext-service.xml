@@ -23,4 +23,6 @@
 	<bean id="userService" class="service.impl.UserServiceImpl"/>
 	<!-- 文件管理 -->
 	<bean id="fileService" class="service.impl.FileServiceImpl"/>
+	
+	<bean id="UserAction11" class="action.UserAction"></bean>
 </beans>
