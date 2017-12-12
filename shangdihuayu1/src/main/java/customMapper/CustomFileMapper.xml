@@ -20,13 +20,13 @@
 			UUID(),
 			#{module},
 			#{album_id},
-			'11',
+			null,
 			#{type},
 			#{file_name},
-			'11',
-			'11',
+			null,
+			null,
 			NOW(),
-			'11'
+			null
 			)
 	</insert>
 	<!-- 添加主播音乐所属图片 -->

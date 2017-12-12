@@ -34,22 +34,18 @@ import util.StringUtil;
 @RequestMapping("/uploadAction")
 public class UploadAction extends BaseAction{
 	
-	@Value("${path}")
-	private String relPath;
-	
 	@ResponseBody
 	@RequestMapping("/uploadFile")
 	public JsonResult UploadFile(HttpServletRequest req) throws SysException, IOException{
-//		String relPath = PropertiesUtil.getProperties();
+		String BASE_PATH = PropertiesUtil.getPropertieRes("/config/path.properties", "path");
+		System.out.println(BASE_PATH);	
 		
-		String relPath = "/storage/upload/Img/";
 		JsonResult result = new JsonResult();
 		//List filesList = new ArrayList();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Map<String, Comparable> fileMap = new HashMap<String, Comparable>();
 		List<Map<String, Comparable>> filesList = new ArrayList<Map<String, Comparable>>();
 			try {
-				System.out.println(relPath);
 				String module = req.getParameter("module");	
 				String type = req.getParameter("type");
 //				String module = "junzundejingbai";
@@ -65,7 +61,7 @@ public class UploadAction extends BaseAction{
 					if (multiFile != null && !multiFile.isEmpty()) {
 //						String file_path = req.getSession().getServletContext().getRealPath(relPath) + module;
 						
-						String absolute_file_folder = "D:/upload/"+ type+ "/" + module;
+						String absolute_file_folder = BASE_PATH + type+ "/" + module;
 						String relative_file_folder = "/"+ type+ "/" + module;
 						System.out.println(absolute_file_folder);
 						if (multiFile != null && !multiFile.isEmpty()) {
@@ -157,15 +153,14 @@ public class UploadAction extends BaseAction{
 	@ResponseBody
 	@RequestMapping("/uploadVoiceFile")
 	public JsonResult UploadMultiMediaFile(HttpServletRequest req) throws SysException, IOException{
-//		String relPath = PropertiesUtil.getProperties();
-		
+		String BASE_PATH = PropertiesUtil.getPropertieRes("/config/path.properties", "path");
 		JsonResult result = new JsonResult();
 		//List filesList = new ArrayList();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Map<String, Comparable> fileMap = new HashMap<String, Comparable>();
 		List<Map<String, Comparable>> filesList = new ArrayList<Map<String, Comparable>>();
 			try {
-				System.out.println(relPath);
+				System.out.println(BASE_PATH);
 				String module = req.getParameter("module");//文件的所属模块
 				String type = req.getParameter("type");//上传的文件类型
 				req.setCharacterEncoding("UTF-8");
@@ -179,7 +174,7 @@ public class UploadAction extends BaseAction{
 					MultipartFile multiFile = multiReq.getFile(fileName);
 					if (multiFile != null && !multiFile.isEmpty()) {
 //						String file_path = req.getSession().getServletContext().getRealPath(relPath) + module;
-						String file_path = "D:photo/"+ type + module;
+						String file_path = BASE_PATH + type + module;
 						System.out.println(file_path);
 						if (multiFile != null && !multiFile.isEmpty()) {
 
@@ -230,7 +225,7 @@ public class UploadAction extends BaseAction{
 							}
 							// 插入数据库
 							if (uploadSuccess) {
-								fileMap.put("path", relPath + module + "/" + originName);
+								fileMap.put("path", BASE_PATH + module + "/" + originName);
 								fileMap.put("file_name", originName);
 								fileMap.put("file_content_type", file_content_type);
 								logger.info(file_path);

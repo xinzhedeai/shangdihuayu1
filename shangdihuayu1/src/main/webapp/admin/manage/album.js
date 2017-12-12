@@ -119,13 +119,12 @@ var $album = {
 		reqParams.album_id_lv1 = $('#album_id_lv1').combobox('getText');
 //		reqParams.push({'name':'file_name', 'value': $('.pic_preview_div').find('img').data()});
 		util.ajaxPostCus('/albumAction/addAlbum.action', reqParams, function(res){
-			var result = res.result;
-	   		if(res.errCd == '0'){
-	   			if(result && result.success){
-	   				$($fault.error_info_datagrid).datagrid('reload');
-	   	    	}
+//			var result = res.result;
+	   		if(res.success){
+	   			layer.alert(REMIND_MSG.ADD_SUCCESS);
+	   			$($fault.error_info_datagrid).datagrid('reload');
 	   		}else{
-	   			layer.alert(res.errMsg);
+	   			layer.alert(REMIND_MSG.ADD_FAIL);
 	   		}
 		})
 	},

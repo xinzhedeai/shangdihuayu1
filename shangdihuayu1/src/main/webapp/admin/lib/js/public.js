@@ -10,7 +10,9 @@
  * 常用提示信息集中配置
  */
 var REMIND_MSG = {
-	'NO_DATA' : '没有相关数据'	
+	'NO_DATA' : '没有相关数据',
+	'ADD_SUCCESS' : '添加成功',
+	'ADD_FAIL' : '添加失败'
 };
 
 /**

@@ -1,4 +1,5 @@
 package action;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import pageModel.EasyUIGridObj;
 import pageModel.JsonResult;
 import service.UserService;
 import util.MSG_CONST;
+import util.PropertiesUtil;
 import util.SpringUtils;
 @Component
 @RequestMapping("/userAction")
@@ -60,11 +62,9 @@ public class UserAction extends BaseAction{
 	@ResponseBody
 	@RequestMapping("/getUserListByPage")
 	public JsonResult getUserListByPage(HttpServletRequest req) throws Exception{
-		System.out.println("*******************************");
-		System.out.println("spring注入路径" + path);
-		System.out.println("spring注入路径driver*****" + driver);
-		System.out.println("*******************************");
-//		System.out.println(userServiceImpl.getClass().getField("path"));
+		
+		String BASE_PATH = PropertiesUtil.getPropertieRes("/config/path.properties", "path");
+		System.out.println(BASE_PATH);
 //		Thread.sleep(2000000000);
 		Map reqMap = SpringUtils.getParameterMap(req);
 		JsonResult j = new JsonResult();

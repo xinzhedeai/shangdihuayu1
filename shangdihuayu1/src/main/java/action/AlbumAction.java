@@ -75,24 +75,25 @@ public class AlbumAction {
 		JsonResult j = new JsonResult();
 		Map paramMap = new HashMap();
 		paramMap = SpringUtils.getParameterMap(req);
-		int flag = 1;//flag为1时则表示为添加一级专辑；2时为二级专辑；默认为1级专辑
-		flag = paramMap.get("album_id_lv2").toString().isEmpty() ? 1 : 2;
-		String album_id_lv1_pinyin = "", album_id_lv2_pinyin = "";
-		album_id_lv1_pinyin = StringUtil.converterToSpell(paramMap.get("album_id_lv1").toString());
-		paramMap.put("album_id_lv1_pinyin", album_id_lv1_pinyin);
-		if(flag == 2){
-			album_id_lv2_pinyin = StringUtil.converterToSpell(paramMap.get("album_id_lv2").toString());
-			paramMap.put("album_id_lv2_pinyin", album_id_lv2_pinyin);
+		String album_id_lv1_pinyin = "", album_id_lv2_pinyin = "", album_name_lv1 = "", album_name_lv2;
+		album_name_lv1 = paramMap.get("album_id_lv1").toString();
+		album_id_lv1_pinyin = StringUtil.converterToSpell(album_name_lv1);
+		album_id_lv2_pinyin = paramMap.get("album_id_lv2").toString();
+		paramMap.put("album_name", album_name_lv1);
+		paramMap.put("album_id", album_id_lv1_pinyin);
+		
+		if(!album_id_lv2_pinyin.isEmpty()){//如果有二级专辑,处理逻辑如下
+			album_name_lv2 = paramMap.get("album_id_lv2").toString();
+			album_id_lv2_pinyin = StringUtil.converterToSpell(album_name_lv2);
+			paramMap.put("album_name", album_name_lv1);
+			paramMap.put("album_id", album_id_lv2_pinyin);
+			paramMap.put("parent_id", album_id_lv1_pinyin);
 		}
-//		String album_id = StringUtil.converterToSpell(paramMap.get("album_name").toString());
-//		paramMap.put("album_id", album_id);
 		try {
-			if (flag == 1 && fileServiceImpl.insertAlbumLv1File(paramMap) > 0 && albumServiceImpl.insertAlbumLv1(paramMap) > 0) {
+			if (fileServiceImpl.insertFile(paramMap) > 0 && albumServiceImpl.insertAlbum(paramMap) > 0) {
 				j.setSuccess(true);
 				j.setMsg(MSG_CONST.ADDSUCCESS);
-			} else if(flag == 2 && fileServiceImpl.insertAlbumLv2File(paramMap) > 0 && albumServiceImpl.insertAlbumLv2(paramMap) > 0){
-				
-			}else {
+			} else {
 				j.setSuccess(false);
 				j.setMsg(MSG_CONST.ADDFAIL);
 			}
