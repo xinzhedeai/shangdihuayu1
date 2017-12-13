@@ -334,6 +334,15 @@ html {
 	border-bottom: 1px solid #dbdbdb
 }
 
+#pf-bd #pf-sider .sider-nav>li .sider-nav-s li.active:hover,
+#pf-bd #pf-sider .sider-nav>li .sider-nav-s li:hover {
+	padding-left: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	transition: all .3s ease-in; 
+	cursor: pointer;
+}
+
 #pf-bd #pf-sider .sider-nav>li .sider-nav-s li.active {
 	background: #fff
 }
@@ -418,7 +427,7 @@ html {
 }
 
 #pf-ft {
-	position: absolute;
+	/* position: absolute; *//* 改变主框架底部栏布局 靠最下显示 */
 	width: 100%;
 	height: 27px;
 	line-height: 27px;
@@ -453,3 +462,24 @@ html {
 	background: #275b98;
 	color: #fff
 }
+/*uimaker*/
+.panel-noscroll{overflow:auto;}/*主页右侧页面滚动条显隐设置*/
+
+/* ::-webkit-scrollbar {
+	  width: 15px;
+} 这是针对缺省样式 (必须的)
+::-webkit-scrollbar-track {
+		  background-color: #b46868;
+	} 滚动条的滑轨背景颜色
+
+	::-webkit-scrollbar-thumb {
+		  background-color: rgba(0, 0, 0, 0.2); 
+	} 滑块颜色
+
+	::-webkit-scrollbar-button {
+		  background-color: #7c2929;
+	} 滑轨两头的监听按钮颜色
+
+	::-webkit-scrollbar-corner {
+		  background-color: black;
+	} 横向滚动条和纵向滚动条相交处尖角的颜色 */
