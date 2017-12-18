@@ -7,7 +7,7 @@ document.write('<link rel="stylesheet" type="text/css" href="../../lib/plugin/bo
 				<link rel="stylesheet" style="text/css" href="../../lib/plugin/bootstrap/css/font-awesome.css"></link>');
 
 //easyUI(datagrid, switch)
-document.write('<link rel="stylesheet" type="text/css" href="../lib/plugin/custom/uimaker/easyui.css" />\
+document.write('<link rel="stylesheet" type="text/css" href="../../lib/plugin/jquery-easyui-1.4.4/themes/bootstrap/easyui.css" />\
 				<link rel="stylesheet" type="text/css" href="../../lib/css/extend-easyUI.css" />');
 
 //plupload
@@ -29,7 +29,7 @@ document.write('<script type="text/javascript" src="../lib/js/public.js"></scrip
 document.write('<script type="text/javascript" src="../../lib/plugin/bootstrap/bootstrap.min.js"></script>');
 
 //easyUI
-document.write('<script type="text/javascript" src="../lib/plugin/custom/jquery.easyui.min.js"></script>');
+document.write('<script type="text/javascript" src="../../lib/plugin/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>');
 
 //layerUI
 document.write('<script type="text/javascript" src="../lib/js/layer.js"></script>');

@@ -45,7 +45,8 @@ html {
 	height: 70px;
 	color: #fff;
 	padding: 0 15px;
-	border-right: 1px solid #198b25
+	border-right: 1px solid #198b25;
+    margin-left: 20px;
 }
 
 #pf-hd .pf-nav .pf-nav-item a {

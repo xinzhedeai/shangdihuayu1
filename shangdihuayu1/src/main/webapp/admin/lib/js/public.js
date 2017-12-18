@@ -151,7 +151,7 @@ util.datagrid = function(type){
 			 .datagrid('load', $.serializeObject($('#searchForm')));
 			break;
 	}
-	return this;
+//	return this;
 }
 /**
  * targetForm:表单对象选择字符串
