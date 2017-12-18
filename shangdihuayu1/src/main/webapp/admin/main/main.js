@@ -53,22 +53,22 @@ $(function() {
 		}
 	});
 	
-	$('.sider-nav').on('click', '.sider-nav-s a', function() {
+	$('.sider-nav').on('click', '.sider-nav-s a', function() {//一級菜单点击事件
 		addTab({
 			url : $(this).attr('data-href'),
 			title : $(this).text(),
 		});
 	});
 	
-    $(document).on('click', '.sider-nav > li', function() {//左侧菜单点击展开事件
+    $(document).on('click', '.sider-nav > li', function() {//左侧二级菜单点击展开事件
         $(this).siblings().removeClass('current').end().addClass('current');
         $('iframe').attr('src', $(this).data('src'));
     });
     
-	$(document).on('mouseenter', '.sider-nav-s > li', function() {
+/*	$(document).on('mouseenter', '.sider-nav-s > li', function() {
 		$(this).addClass('pulse').siblings().removeClass('pulse');
-	});
-	
+	});*/
+		
 	$(document).on('click', '.sider-nav-s > li', function() {
 		$(this).addClass('active').siblings().removeClass('active');
 	});
