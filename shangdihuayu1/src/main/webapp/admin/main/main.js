@@ -58,6 +58,7 @@ $(function() {
 			url : $(this).attr('data-href'),
 			title : $(this).text(),
 		});
+		$(this).parent().addClass('active').siblings().removeClass('active');
 	});
 	
     $(document).on('click', '.sider-nav > li', function() {//左侧二级菜单点击展开事件
@@ -69,9 +70,9 @@ $(function() {
 		$(this).addClass('pulse').siblings().removeClass('pulse');
 	});*/
 		
-	$(document).on('click', '.sider-nav-s > li', function() {
+/*	$(document).on('click', '.sider-nav-s > li', function() {
 		$(this).addClass('active').siblings().removeClass('active');
-	});
+	});*/
 	var str = [{
 		"title": "基本信息",
 		"link": "/basic",
@@ -131,23 +132,16 @@ $(function() {
 			return;
 		if ($(this).hasClass('pf-nav-next')) {
 			page ++;
-			$('.pf-nav').stop(true).animate({
-				'margin-top' : -70 * page
-			}, 200);
-			if (page == pages) {
-				$(this).addClass('disabled');
-			}
+			page == pages && $(this).addClass('disabled');
 			$('.pf-nav-prev').removeClass('disabled');
 		} else {
 			page --;
-			$('.pf-nav').stop(true).animate({
-				'margin-top' : -70 * page
-			}, 200);
-			if (page == 0) {
-				$(this).addClass('disabled');
-			}
+			page == 0 && $(this).addClass('disabled');
 			$('.pf-nav-next').removeClass('disabled');
 		}
+		$('.pf-nav').stop(true).animate({
+			'margin-top' : -70 * page
+		}, 200);
 	})
 
     $(document).on('click', '.toggle-icon', function() { //左侧菜单收起
